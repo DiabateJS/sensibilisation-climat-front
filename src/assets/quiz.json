@@ -1,0 +1,59 @@
+{
+	"questions":[
+		{
+			"question":"Quelle serait la température de la Terre sans atmosphère ?",
+			"options":[
+				{"id":"A", "valeur":"+15 °C"},
+				{"id":"B", "valeur":"0 °C"},
+				{"id":"C", "valeur":"-50 °C"},
+				{"id":"D", "valeur":"-18 °C"}
+			],
+			"id_response":"A",
+			"complement_explication":"Heureusement, le phénomène naturel de l’effet de serre conserve dans l’atmosphère une partie de la chaleur du soleil !"
+		},
+		{
+			"question":"Quel gaz a l'effet de serre le plus puissant ?",
+			"options":[
+				{"id":"A", "valeur":"CO2"},
+				{"id":"B", "valeur":"Vapeur d'eau"},
+				{"id":"C", "valeur":"Méthane"},
+				{"id":"D", "valeur":"Argon"}
+			],
+			"id_response":"B",
+			"complement_explication":"La vapeur d’eau contribue pour 60 % à l’effet de serre. Les émissions de ce gaz par l’humanité à travers l’industrie n’ont cependant qu’un effet limité car la durée de vie de la vapeur d’eau est courte."
+		},
+		{
+			"question":"Où va la majorité du CO2 émis par l’Homme ?",
+			"options":[
+				{"id":"A", "valeur":"Dans l'atmosphère"},
+				{"id":"B", "valeur":"Dans l'océan"},
+				{"id":"C", "valeur":"Dans la biomasse"}
+			],
+			"id_response":"A",
+			"complement_explication":"Plus de 50% est encore absorbé par l'atmosphère."
+		},
+		{
+			"question":"En hiver et à quantité égale, lequel de ces aliments émet le plus de CO2 ?",
+			"options":[
+				{"id":"A", "valeur":"Banane de Martinique"},
+				{"id":"B", "valeur":"Tomates d'Espagne"},
+				{"id":"C", "valeur":"Le rutabaga picard"},
+				{"id":"D", "valeur":"Le café colombien"}
+			],
+			"id_response":"B",
+			"complement_explication":"À quantité égale, produire une tomate en hiver génère aujourd'hui plus de C02 que le transport des autres aliments..."
+		},
+		{
+			"question":"En hiver et à quantité égale, lequel de ces aliments émet le plus de CO2 ?",
+			"options":[
+				{"id":"A", "valeur":"Banane de Martinique"},
+				{"id":"B", "valeur":"Tomates d'Espagne"},
+				{"id":"C", "valeur":"Le rutabaga picard"},
+				{"id":"D", "valeur":"Le café colombien"}
+			],
+			"id_response":"B",
+			"complement_explication":"À quantité égale, produire une tomate en hiver génère aujourd'hui plus de C02 que le transport des autres aliments..."
+		}
+	],
+	"le_savais_tu":"Un jour passé à Pékin en respirant l’air a les mêmes effets sur la santé que fumer 21 cigarettes !"
+}
