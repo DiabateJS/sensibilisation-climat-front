@@ -1,2 +1,15 @@
-<p>quiz works!</p>
+<br>
+<div *ngFor="let question of questions">
+    {{ question.libelle }}<br>
+    Reponses : <br>
+    <li *ngFor="let option of question.options">
+        {{option.id}} : {{option.valeur}}
+    </li><br>
+    Reponse correcte : {{question.idResponse}}<br><br>
+    Explication : <br>
+    {{question.explication}}
+    <br>
+    <br>
+</div>
+<br>
 <button class="p-button" (click)="goToHome()">Accueil</button>
