@@ -1,6 +1,7 @@
 {
 	"questions":[
 		{
+			"id": 1,
 			"libelle":"Quelle serait la température de la Terre sans atmosphère ?",
 			"options":[
 				{"id":"A", "valeur":"+15 °C"},
@@ -12,6 +13,7 @@
 			"explication":"Heureusement, le phénomène naturel de l’effet de serre conserve dans l’atmosphère une partie de la chaleur du soleil !"
 		},
 		{
+			"id": 2,
 			"libelle":"Quel gaz a l'effet de serre le plus puissant ?",
 			"options":[
 				{"id":"A", "valeur":"CO2"},
@@ -23,6 +25,7 @@
 			"explication":"La vapeur d’eau contribue pour 60 % à l’effet de serre. Les émissions de ce gaz par l’humanité à travers l’industrie n’ont cependant qu’un effet limité car la durée de vie de la vapeur d’eau est courte."
 		},
 		{
+			"id": 3,
 			"libelle":"Où va la majorité du CO2 émis par l’Homme ?",
 			"options":[
 				{"id":"A", "valeur":"Dans l'atmosphère"},
@@ -33,6 +36,7 @@
 			"explication":"Plus de 50% est encore absorbé par l'atmosphère."
 		},
 		{
+			"id": 4,
 			"libelle":"En hiver et à quantité égale, lequel de ces aliments émet le plus de CO2 ?",
 			"options":[
 				{"id":"A", "valeur":"Banane de Martinique"},
@@ -44,6 +48,7 @@
 			"explication":"À quantité égale, produire une tomate en hiver génère aujourd'hui plus de C02 que le transport des autres aliments..."
 		},
 		{
+			"id": 5,
 			"libelle":"En hiver et à quantité égale, lequel de ces aliments émet le plus de CO2 ?",
 			"options":[
 				{"id":"A", "valeur":"Banane de Martinique"},

@@ -14,6 +14,8 @@ export class QuizComponent implements OnInit {
   quiz: Quiz = {} as Quiz;
   questions: Question[] = [];
   info: string = '';
+  displayResponse: boolean = false;
+  idQuestion: number = 0;
   constructor(private router: Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -21,11 +23,23 @@ export class QuizComponent implements OnInit {
         this.quiz = data;
         this.questions = data.questions;
         this.info = data.info;
+        this.idQuestion = 1;
     });
   }
 
   goToHome(){
     this.router.navigate(['/']);
   }
+
+    checkResponse(){
+      this.displayResponse = true;
+    }
+
+    nextQuestion(){
+      this.displayResponse = false;
+      if (this.idQuestion < this.questions.length){
+          this.idQuestion += 1;
+      }
+    }
 
 }
