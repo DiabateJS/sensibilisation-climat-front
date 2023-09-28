@@ -2,21 +2,22 @@
 <b>{{quiz.id}} - {{quiz.libelle}}</b>
 <br>
 <br>
-<div *ngFor="let question of questions">
+<div *ngFor="let question of questions" class="quiz">
     <ng-container *ngIf="question.id == idQuestion">
         {{question.id}} . {{ question.libelle }}<br>
         <br>
         <div class="question-options">
             <div *ngFor="let option of question.options" class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="{{option.id}}">
-                <label class="form-check-label" for="{{option.id}}">
+                <input class="form-check-input" type="checkbox" id="{{question.id}}{{option.id}}">
+                <label class="form-check-label" for="{{question.id}}{{option.id}}">
                     {{option.id}} : {{option.valeur}}
                 </label>
             </div>
         </div>
         <br>
         <button class="btn btn-primary" (click)="checkResponse()" *ngIf="!displayResponse">Valider</button>
-        <div *ngIf="displayResponse">
+        <div *ngIf="displayResponse" class="resultat">
+            <div>{{ resultatQuestion }}</div>
             Reponse correcte : {{question.idResponse}}<br><br>
             Explication : <br>
             {{question.explication}}

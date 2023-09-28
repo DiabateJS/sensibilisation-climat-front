@@ -1,11 +1,13 @@
-.question-options {
-  margin-left: 20px;
-  .form-check {
-    border: 1px solid blue;
-    width: 250px;
-    height: 30px;
-    border-radius: 10px;
-    margin-left: 10px;
-    padding-left: 35px;
+.quiz{
+  .question-options {
+    margin-left: 20px;
+    .form-check {
+      border: 1px solid blue;
+      width: 250px;
+      height: 30px;
+      border-radius: 10px;
+      margin-left: 10px;
+      padding-left: 35px;
+    }
   }
 }

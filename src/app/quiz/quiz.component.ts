@@ -15,6 +15,8 @@ export class QuizComponent implements OnInit {
   questions: Question[] = [];
   info: string = '';
   displayResponse: boolean = false;
+  responseCorrect: boolean = false;
+  resultatQuestion: string = '';
   idQuestion: number = 0;
   constructor(private router: Router, private httpClient: HttpClient) { }
 
@@ -33,6 +35,10 @@ export class QuizComponent implements OnInit {
 
     checkResponse(){
       this.displayResponse = true;
+      let currentQuestion = this.questions[this.idQuestion - 1];
+      console.log(currentQuestion);
+      let currentOptions = currentQuestion.options;
+      console.log(currentOptions);
     }
 
     nextQuestion(){
