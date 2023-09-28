@@ -1,4 +1,7 @@
 <br>
+<b>{{quiz.id}} - {{quiz.libelle}}</b>
+<br>
+<br>
 <div *ngFor="let question of questions">
     <ng-container *ngIf="question.id == idQuestion">
         {{question.id}} . {{ question.libelle }}<br>

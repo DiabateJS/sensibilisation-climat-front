@@ -1,3 +1,7 @@
 <div class="h1">Quiz de Sensibilisation au changement climatique</div>
 <br>
-<button class="btn btn-primary" (click)="loadQuiz()">Lancer Quiz</button>
+<div *ngFor="let quiz of quizs">
+    {{quiz.id}}<br>
+    {{quiz.libelle}}<br><br>
+    <button class="btn btn-success" (click)="loadQuiz()">Lancer</button>
+</div>

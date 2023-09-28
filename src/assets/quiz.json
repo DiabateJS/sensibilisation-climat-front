@@ -1,4 +1,6 @@
 {
+	"id":"QZ001",
+	"libelle":"Quiz Niveau 1",
 	"questions":[
 		{
 			"id": 1,
