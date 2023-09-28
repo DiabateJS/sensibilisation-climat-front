@@ -19,7 +19,12 @@
             {{question.explication}}
             <br>
             <br>
-            <button class="btn btn-success" (click)="nextQuestion()">Suivant</button>
+            <div *ngIf="idQuestion == questions.length">
+                Le saviez-vous : <br>
+                {{info}}
+            </div>
+            <br>
+            <button class="btn btn-success" (click)="nextQuestion()" *ngIf="idQuestion != questions.length">Suivant</button>
         </div>
     </ng-container>
 </div>
