@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Quiz } from '../model/quiz';
 import { HttpClient } from '@angular/common/http';
+import { QuizService } from '../quiz/quiz.service';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,13 @@ export class HomeComponent implements OnInit {
 
   quizs: Quiz[] = [];
 
-  constructor(private router: Router, private httpClient: HttpClient) { }
+  constructor(private router: Router, private quizService: QuizService) { }
 
   ngOnInit(): void {
-    this.httpClient.get<Quiz[]>('/assets/quizs.json').subscribe(data =>{
-      this.quizs = data;
-  });
+    this.quizService.getQuizs().subscribe(quizs => {
+      console.log(quizs);
+      this.quizs = quizs;
+    });
   }
 
   loadQuiz(){

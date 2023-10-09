@@ -16,6 +16,7 @@ export class QuizComponent implements OnInit {
   info: string = '';
   displayResponse: boolean = false;
   responseCorrect: boolean = false;
+  currentResponse: string = '';
   resultatQuestion: string = '';
   idQuestion: number = 0;
   constructor(private router: Router, private httpClient: HttpClient) { }
@@ -47,5 +48,4 @@ export class QuizComponent implements OnInit {
           this.idQuestion += 1;
       }
     }
-
 }
