@@ -1,3 +1,5 @@
 <div class="h1">Quiz de Sensibilisation au changement climatique</div>
 <br>
-<app-quiz-card *ngFor="let quiz of quizs" [quiz]="quiz"></app-quiz-card>
+<div style="display: inline-flex">
+    <app-quiz-card *ngFor="let quiz of quizs" [quiz]="quiz"></app-quiz-card>
+</div>
