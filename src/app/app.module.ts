@@ -7,12 +7,14 @@ import { QuizComponent } from './quiz/quiz.component';
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
+import { QuizCardComponent } from './quiz-card/quiz-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
-    HomeComponent
+    HomeComponent,
+    QuizCardComponent
   ],
   imports: [
     BrowserModule,

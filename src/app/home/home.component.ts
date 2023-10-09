@@ -13,17 +13,12 @@ export class HomeComponent implements OnInit {
 
   quizs: Quiz[] = [];
 
-  constructor(private router: Router, private quizService: QuizService) { }
+  constructor(private quizService: QuizService) { }
 
   ngOnInit(): void {
     this.quizService.getQuizs().subscribe(quizs => {
-      console.log(quizs);
       this.quizs = quizs;
     });
-  }
-
-  loadQuiz(){
-    this.router.navigate(['/quiz']);
   }
 
 }

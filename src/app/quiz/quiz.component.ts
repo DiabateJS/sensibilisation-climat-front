@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 import {Quiz} from "../model/quiz";
@@ -11,7 +11,9 @@ import {Question} from "../model/question";
 })
 export class QuizComponent implements OnInit {
 
+  @Input()
   quiz: Quiz = {} as Quiz;
+
   questions: Question[] = [];
   info: string = '';
   displayResponse: boolean = false;
@@ -22,12 +24,9 @@ export class QuizComponent implements OnInit {
   constructor(private router: Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.httpClient.get<Quiz>('/assets/quiz.json').subscribe(data =>{
-        this.quiz = data;
-        this.questions = data.questions;
-        this.info = data.info;
-        this.idQuestion = 1;
-    });
+    this.questions = this.quiz.questions;
+    this.info = this.quiz.info;
+    this.idQuestion = 1;
   }
 
   goToHome(){
