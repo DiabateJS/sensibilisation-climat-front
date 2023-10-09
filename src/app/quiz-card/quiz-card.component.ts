@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class QuizCardComponent implements OnInit {
 
   @Input()
-  quiz: Quiz = {} as Quiz;
+  quiz!: Quiz;
 
   constructor(private router: Router) { }
 
