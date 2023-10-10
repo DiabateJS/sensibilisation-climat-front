@@ -8,7 +8,7 @@
         <br>
         <div class="question-options">
             <div *ngFor="let option of question.options" class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{question.id}}{{option.id}}">
+                <input class="form-check-input" type="checkbox" (change)="onResponseSelect(question.id, option.id, $event)">
                 <label class="form-check-label" for="{{question.id}}{{option.id}}">
                     {{option.id}} : {{option.valeur}}
                 </label>

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HttpClient} from "@angular/common/http";
 import {Quiz} from "../model/quiz";
 import {Question} from "../model/question";
+import {Response} from "../model/response";
 import { QuizService } from './quiz.service';
 
 @Component({
@@ -19,9 +19,11 @@ export class QuizComponent implements OnInit {
   displayResponse: boolean = false;
   responseCorrect: boolean = false;
   currentResponse: string = '';
+  currentOption: string = '';
   resultatQuestion: string = '';
   idQuestion: number = 0;
-  
+  responses: Response[] = [];
+
   constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService) {
   }
 
@@ -51,6 +53,12 @@ export class QuizComponent implements OnInit {
       console.log(currentQuestion);
       let currentOptions = currentQuestion.options;
       console.log(currentOptions);
+      let currentResponse = {} as Response;
+      currentResponse.idQuestion = this.idQuestion;
+      currentResponse.correctResponse = currentQuestion.idResponse;
+      currentResponse.response = this.currentOption;
+      this.responses.push(currentResponse);
+      console.log(this.responses);
     }
 
     nextQuestion(){
@@ -58,5 +66,13 @@ export class QuizComponent implements OnInit {
       if (this.idQuestion < this.questions.length){
           this.idQuestion += 1;
       }
+    }
+
+    onResponseSelect(questionId: number, optionId: string, event: any){
+      console.log(event);
+      console.log("Question : "+questionId);
+      console.log("Option Id : "+optionId);
+      this.currentOption = optionId;
+
     }
 }
