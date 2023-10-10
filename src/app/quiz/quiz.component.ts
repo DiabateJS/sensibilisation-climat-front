@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 import {Quiz} from "../model/quiz";
 import {Question} from "../model/question";
+import { QuizService } from './quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -11,7 +12,6 @@ import {Question} from "../model/question";
 })
 export class QuizComponent implements OnInit {
 
-  @Input()
   quiz: Quiz = {} as Quiz;
 
   questions: Question[] = [];
@@ -21,14 +21,24 @@ export class QuizComponent implements OnInit {
   currentResponse: string = '';
   resultatQuestion: string = '';
   idQuestion: number = 0;
-  constructor(private router: Router, private route: ActivatedRoute) {
-    this.route.params.subscribe(params => console.log(params));
+  
+  constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService) {
   }
 
   ngOnInit(): void {
-    this.questions = this.quiz.questions;
-    this.info = this.quiz.info;
-    this.idQuestion = 1;
+    this.route.params.subscribe(params => {
+      console.log(params);
+      let idQuiz = params.id;
+      console.log(idQuiz);
+
+      this.quizService.getQuiz(idQuiz).subscribe(qz => {
+        console.log(qz);
+        this.quiz = qz;
+        this.questions = this.quiz.questions;
+        this.info = this.quiz.info;
+        this.idQuestion = 1;
+      });
+    });
   }
 
   goToHome(){
