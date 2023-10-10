@@ -14,4 +14,8 @@ export class QuizService {
   getQuizs(): Observable<Quiz[]> {
     return this.httpClient.get<Quiz[]>(Constants.URL_BASE+'quizs', Constants.HTTP_OPTIONS);
   }
+
+  getQuiz(id: number): Observable<Quiz> {
+    return this.httpClient.get<Quiz>(Constants.URL_BASE+'quizs/'+id, Constants.HTTP_OPTIONS);
+  }
 }

@@ -17,9 +17,4 @@ export class QuizCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loadQuiz(){
-    console.log("Lancement du Quiz : "+this.quiz.id);
-    //this.router.navigate(['/quiz']);
-  }
-
 }

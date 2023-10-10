@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 import {Quiz} from "../model/quiz";
 import {Question} from "../model/question";
@@ -21,7 +21,9 @@ export class QuizComponent implements OnInit {
   currentResponse: string = '';
   resultatQuestion: string = '';
   idQuestion: number = 0;
-  constructor(private router: Router, private httpClient: HttpClient) { }
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => console.log(params));
+  }
 
   ngOnInit(): void {
     this.questions = this.quiz.questions;
