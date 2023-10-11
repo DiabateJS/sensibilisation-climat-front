@@ -17,8 +17,8 @@
         <br>
         <button class="btn btn-primary" (click)="checkResponse()" *ngIf="!displayResponse">Valider</button>
         <div *ngIf="displayResponse" class="resultat">
-            <div>{{ resultatQuestion }}</div>
-            Reponse correcte : {{question.idResponse}}<br><br>
+            <div [ngClass]="responseOk ? 'response-ok' : 'response-ko'">{{ resultatQuestion }}</div><br>
+            <div *ngIf="!responseOk">Reponse correcte : {{question.idResponse}}<br><br></div>
             Explication : <br>
             {{question.explication}}
             <br>

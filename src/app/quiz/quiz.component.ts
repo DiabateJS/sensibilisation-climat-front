@@ -23,6 +23,7 @@ export class QuizComponent implements OnInit {
   resultatQuestion: string = '';
   idQuestion: number = 0;
   responses: Response[] = [];
+  responseOk: boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute, private quizService: QuizService) {
   }
@@ -54,6 +55,8 @@ export class QuizComponent implements OnInit {
       let currentOptions = currentQuestion.options;
       console.log(currentOptions);
       let currentResponse = {} as Response;
+      this.responseOk = currentQuestion.idResponse == this.currentOption;
+      this.resultatQuestion = this.responseOk ? "Bonne réponse" : "Mauvaise réponse";
       currentResponse.idQuestion = this.idQuestion;
       currentResponse.correctResponse = currentQuestion.idResponse;
       currentResponse.response = this.currentOption;
