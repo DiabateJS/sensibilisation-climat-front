@@ -33,4 +33,28 @@
     </ng-container>
 </div>
 <br>
-<button class="btn btn-warning" (click)="goToHome()" *ngIf="idQuestion == questions.length">Accueil</button>
+<div class="bilan-quiz" *ngIf="endOfQuiz">
+    Bilan du Quiz<br>
+    <br>
+    Nombre de Question : {{questions.length}}<br>
+    Nombre de reponses correctes : {{ nbreQuestionOk }}<br>
+    Nombre de reponses fausses : {{ nbreQuestionKo }}<br>
+    Taux de reussite : {{ (nbreQuestionOk / questions.length) * 100 }}<br>
+    <br>
+    <br>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Reponse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of responses">
+                <td>{{res.idQuestion}}</td>
+                <td>{{ res.response == res.correctResponse }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<button class="btn btn-warning" (click)="goToHome()" *ngIf="endOfQuiz">Accueil</button>
