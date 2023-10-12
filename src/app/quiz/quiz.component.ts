@@ -17,6 +17,7 @@ export class QuizComponent implements OnInit {
   questions: Question[] = [];
   info: string = '';
   displayResponse: boolean = false;
+  displayBilanQuiz: boolean = false;
   responseCorrect: boolean = false;
   currentResponse: string = '';
   currentOption: string = '';
@@ -87,5 +88,9 @@ export class QuizComponent implements OnInit {
       console.log("Option Id : "+optionId);
       this.currentOption = optionId;
 
+    }
+
+    showBilanQuiz(){
+      this.displayBilanQuiz = true;
     }
 }

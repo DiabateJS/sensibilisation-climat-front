@@ -1,0 +1,24 @@
+<div class="bilan-quiz">
+    <h3>Bilan du Quiz</h3>
+    <br>
+    Nombre de Question : <b>{{questions.length}}</b><br>
+    Nombre de reponses correctes : <b>{{ nbreQuestionOk }}</b><br>
+    Nombre de reponses fausses : <b>{{ nbreQuestionKo }}</b><br>
+    Taux de reussite : <b>{{ tauxReussite }} %</b><br>
+    <br>
+    <br>
+    <table class="table table-striped table-hover" style="width: 30%;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Reponse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of responses">
+                <td>{{res.idQuestion}}</td>
+                <td [ngClass]="res.response == res.correctResponse ? 'response-ok' : 'response-ko'"><b>{{ res.response == res.correctResponse ? 'OK' : 'KO' }}</b></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

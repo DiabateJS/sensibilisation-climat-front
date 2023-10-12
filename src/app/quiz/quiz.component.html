@@ -3,7 +3,7 @@
 <br>
 <br>
 <div *ngFor="let question of questions" class="quiz">
-    <ng-container *ngIf="question.id == idQuestion">
+    <ng-container *ngIf="!displayBilanQuiz && question.id == idQuestion">
         {{question.id}} . {{ question.libelle }}<br>
         <br>
         <div class="question-options">
@@ -29,32 +29,15 @@
             </div>
             <br>
             <button class="btn btn-success" (click)="nextQuestion()" *ngIf="idQuestion != questions.length">Suivant</button>
+            <button class="btn btn-primary" (click)="showBilanQuiz()" *ngIf="endOfQuiz">Bilan Quiz</button>
         </div>
     </ng-container>
 </div>
 <br>
-<div class="bilan-quiz" *ngIf="endOfQuiz">
-    Bilan du Quiz<br>
-    <br>
-    Nombre de Question : {{questions.length}}<br>
-    Nombre de reponses correctes : {{ nbreQuestionOk }}<br>
-    Nombre de reponses fausses : {{ nbreQuestionKo }}<br>
-    Taux de reussite : {{ (nbreQuestionOk / questions.length) * 100 }}<br>
-    <br>
-    <br>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Reponse</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let res of responses">
-                <td>{{res.idQuestion}}</td>
-                <td>{{ res.response == res.correctResponse }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div *ngIf="endOfQuiz && displayBilanQuiz">
+    <app-bilan-quiz [questions]="questions"
+                    [responses]="responses"
+                    [nbreQuestionOk]="nbreQuestionOk"
+                    [nbreQuestionKo]="nbreQuestionKo"></app-bilan-quiz>
 </div>
-<button class="btn btn-warning" (click)="goToHome()" *ngIf="endOfQuiz">Accueil</button>
+<button class="btn btn-warning" (click)="goToHome()" *ngIf="endOfQuiz && displayBilanQuiz">Accueil</button>

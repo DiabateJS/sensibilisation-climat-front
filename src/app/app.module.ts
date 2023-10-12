@@ -8,13 +8,15 @@ import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { QuizCardComponent } from './quiz-card/quiz-card.component';
+import { BilanQuizComponent } from './bilan-quiz/bilan-quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
     HomeComponent,
-    QuizCardComponent
+    QuizCardComponent,
+    BilanQuizComponent
   ],
   imports: [
     BrowserModule,
