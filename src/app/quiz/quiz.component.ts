@@ -43,43 +43,59 @@ export class QuizComponent implements OnInit {
         this.quiz = qz;
         this.questions = this.quiz.questions;
         this.info = this.quiz.info;
-        this.idQuestion = 1;
+        this.loadFirstQuestion();
       });
     });
+  }
+
+  loadFirstQuestion(): void{
+    this.idQuestion = 1;
   }
 
   goToHome(){
     this.router.navigate(['/']);
   }
 
-    checkResponse(){
-      this.displayResponse = true;
-      let currentQuestion = this.questions[this.idQuestion - 1];
-      console.log(currentQuestion);
-      let currentOptions = currentQuestion.options;
-      console.log(currentOptions);
-      let currentResponse = {} as Response;
-      this.responseOk = currentQuestion.idResponse == this.currentOption;
-      if (this.responseOk){
-        this.resultatQuestion = "Bonne réponse";
-        this.nbreQuestionOk += 1;
-      }else{
-        this.resultatQuestion = "Mauvaise réponse";
-        this.nbreQuestionKo += 1;
+  getCurrentQuestion(): Question {
+    return this.questions[this.idQuestion - 1];
+  }
+
+  buildCurrentResponse(idResponse: string) {
+    let currentResponse = {} as Response;
+    currentResponse.idQuestion = this.idQuestion;
+    currentResponse.correctResponse = idResponse;
+    currentResponse.response = this.currentOption;
+    this.responses.push(currentResponse);
+    console.log(this.responses);
+  }
+
+  checkResponse(){
+    this.displayResponse = true;
+    let currentQuestion = this.getCurrentQuestion();
+    console.log(currentQuestion);
+    let currentOptions = currentQuestion.options;
+    console.log(currentOptions);
+    this.responseOk = currentQuestion.idResponse == this.currentOption;
+    if (this.responseOk){
+      this.resultatQuestion = "Bonne réponse";
+      this.nbreQuestionOk += 1;
+    }else{
+      this.resultatQuestion = "Mauvaise réponse";
+      this.nbreQuestionKo += 1;
+    }
+    this.buildCurrentResponse(currentQuestion.idResponse);
+    this.endOfQuiz = this.idQuestion == this.questions.length;
+  }
+
+    loadNextQuestion(): void{
+      if (this.idQuestion < this.questions.length){
+        this.idQuestion += 1;
       }
-      currentResponse.idQuestion = this.idQuestion;
-      currentResponse.correctResponse = currentQuestion.idResponse;
-      currentResponse.response = this.currentOption;
-      this.responses.push(currentResponse);
-      console.log(this.responses);
-      this.endOfQuiz = this.idQuestion == this.questions.length;
     }
 
     nextQuestion(){
       this.displayResponse = false;
-      if (this.idQuestion < this.questions.length){
-          this.idQuestion += 1;
-      }
+      this.loadNextQuestion();
     }
 
     onResponseSelect(questionId: number, optionId: string, event: any){
