@@ -1,5 +1,8 @@
-<div class="h1">Quiz de Sensibilisation au changement climatique</div>
+<app-header></app-header>
+<br>
+<a [routerLink]="['admin']">Administration</a>
 <br>
 <div style="display: inline-flex">
     <app-quiz-card *ngFor="let quiz of quizs" [quiz]="quiz"></app-quiz-card>
 </div>
+<app-footer></app-footer>
