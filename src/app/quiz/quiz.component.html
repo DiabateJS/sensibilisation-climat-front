@@ -3,12 +3,12 @@
 <br>
 <br>
 <div *ngFor="let question of questions" class="quiz">
-    <ng-container *ngIf="!displayBilanQuiz && question.id == idQuestion">
-        {{question.id}} . {{ question.libelle }}<br>
+    <ng-container *ngIf="!displayBilanQuiz && question.ordre == ordreQuestion">
+        {{question.ordre}} . {{ question.libelle }}<br>
         <br>
         <div class="question-options">
             <div *ngFor="let option of question.options" class="form-check">
-                <input class="form-check-input" type="checkbox" (change)="onResponseSelect(question.id, option.id, $event)">
+                <input class="form-check-input" type="checkbox" (change)="onResponseSelect(question.id, option.id)">
                 <label class="form-check-label" for="{{question.id}}{{option.id}}">
                     {{option.id}} : {{option.valeur}}
                 </label>
@@ -23,12 +23,12 @@
             {{question.explication}}
             <br>
             <br>
-            <div *ngIf="idQuestion == questions.length">
+            <div *ngIf="ordreQuestion == questions.length">
                 Le saviez-vous : <br>
                 {{info}}
             </div>
             <br>
-            <button class="btn btn-success" (click)="nextQuestion()" *ngIf="idQuestion != questions.length">Suivant</button>
+            <button class="btn btn-success" (click)="nextQuestion()" *ngIf="ordreQuestion != questions.length">Suivant</button>
             <button class="btn btn-primary" (click)="showBilanQuiz()" *ngIf="endOfQuiz">Bilan Quiz</button>
         </div>
     </ng-container>

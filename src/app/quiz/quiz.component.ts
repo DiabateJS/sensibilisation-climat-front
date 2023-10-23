@@ -23,6 +23,7 @@ export class QuizComponent implements OnInit {
   currentOption: string = '';
   resultatQuestion: string = '';
   idQuestion: number = 0;
+  ordreQuestion: number = 0;
   responses: Response[] = [];
   responseOk: boolean = false;
   endOfQuiz: boolean = false;
@@ -49,7 +50,10 @@ export class QuizComponent implements OnInit {
   }
 
   loadFirstQuestion(): void{
-    this.idQuestion = 1;
+    this.ordreQuestion = 1;
+    let firstQuestion: Question = {} as Question;
+    firstQuestion = this.questions.filter(question => question.ordre == this.ordreQuestion)[0];
+    this.idQuestion = firstQuestion.id ? firstQuestion.id : 1;
   }
 
   goToHome(){
@@ -57,12 +61,15 @@ export class QuizComponent implements OnInit {
   }
 
   getCurrentQuestion(): Question {
-    return this.questions[this.idQuestion - 1];
+    let currentQuestion: Question = {} as Question;
+    currentQuestion = this.questions.filter(q => q.ordre == this.ordreQuestion)[0];
+    return currentQuestion;
   }
 
   buildCurrentResponse(idResponse: string) {
     let currentResponse = {} as Response;
     currentResponse.idQuestion = this.idQuestion;
+    currentResponse.ordreQuestion = this.ordreQuestion;
     currentResponse.correctResponse = idResponse;
     currentResponse.response = this.currentOption;
     this.responses.push(currentResponse);
@@ -84,12 +91,12 @@ export class QuizComponent implements OnInit {
       this.nbreQuestionKo += 1;
     }
     this.buildCurrentResponse(currentQuestion.idResponse);
-    this.endOfQuiz = this.idQuestion == this.questions.length;
+    this.endOfQuiz = this.ordreQuestion == this.questions.length;
   }
 
     loadNextQuestion(): void{
-      if (this.idQuestion < this.questions.length){
-        this.idQuestion += 1;
+      if (this.ordreQuestion < this.questions.length){
+        this.ordreQuestion += 1;
       }
     }
 
@@ -98,9 +105,8 @@ export class QuizComponent implements OnInit {
       this.loadNextQuestion();
     }
 
-    onResponseSelect(questionId: number, optionId: string, event: any){
-      console.log(event);
-      console.log("Question : "+questionId);
+    onResponseSelect(questionId: number, optionId: string){
+      console.log("Id Question : "+questionId);
       console.log("Option Id : "+optionId);
       this.currentOption = optionId;
 
