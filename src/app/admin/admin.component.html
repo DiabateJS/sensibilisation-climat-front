@@ -1,1 +1,15 @@
-<p>admin works!</p>
+<app-header></app-header>
+<div class="admin-container">
+    <div class="left-panel">
+        <div class="list-group">
+            <a *ngFor="let quiz of quizs" (click)="loadQuizInfo(quiz.id)"class="list-group-item list-group-item-action" [ngClass]="{'list-group-item list-group-item-action': true, 'active': quiz.id == currentQuizId}">{{ quiz.code }}</a>
+          </div>
+    </div>
+    <div class="right-panel">
+        Id : {{quiz.id}}<br>
+        <b>{{quiz.code}}</b><br>
+        {{quiz.libelle}}<br>
+        Description <br>
+        {{quiz.description}}<br>
+    </div>
+</div>

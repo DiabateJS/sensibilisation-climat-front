@@ -1,0 +1,11 @@
+.admin-container {
+    padding: 15px;
+    display: flex;
+    .left-panel {
+        width: 20%;
+    }
+    .right-panel {
+        width: 60%;
+        margin-left: 15px;
+    }
+}

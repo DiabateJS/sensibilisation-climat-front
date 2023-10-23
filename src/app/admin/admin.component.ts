@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Quiz} from "../model/quiz";
+import { QuizService } from '../quiz/quiz.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  quizs: Quiz[] = [];
+  quiz: Quiz = {} as Quiz;
+  currentQuizId: number = 1;
+
+  constructor(private quizService: QuizService) { }
 
   ngOnInit(): void {
+    this.quizService.getQuizs().subscribe(data => {
+      console.log(data);
+      this.quizs = data;
+      if (this.quizs.length > 0){
+        this.currentQuizId = this.quizs[0].id;
+        this.loadQuizInfo(this.currentQuizId);
+      }
+    });
+  }
+
+  loadQuizInfo(id: number): void{
+    this.currentQuizId = id;
+    this.quiz = this.quizs.filter(qz => qz.id == id)[0];
   }
 
 }
