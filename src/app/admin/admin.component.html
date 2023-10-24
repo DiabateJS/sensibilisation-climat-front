@@ -6,40 +6,66 @@
           </div>
     </div>
     <div class="right-panel">
-        Id : {{quiz.id}}<br>
-        <b>{{quiz.code}}</b><br>
-        {{quiz.libelle}}<br>
-        Description <br>
-        {{quiz.description}}<br><br>
-        Information complémentaire : <br>
-        {{quiz.info}}<br>
         <br>
-        Questions du quiz :<br>
-        <button class="btn btn-success" (click)="ajoutQuestion(quiz.id)">Ajout question</button>
+        <button class="btn btn-info" (click)="creerQuiz()">Nouveau Quiz</button>
         <br>
-        <table class="table table-striped">
-            <thead class="table-light">
-                <tr>
-                    <th>Id</th>
-                    <th>Libelle</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let question of questions">
-                    <td>{{question.ordre}}</td>
-                    <td>{{question.libelle}}<br>
-                        <ul>
-                            <li *ngFor="let option of question.options">{{option.id}} . {{option.valeur}}</li>
-                        </ul><br>
-                        Reponse correcte : <b>{{ question.idResponse }}</b><br>
-                        <br>
-                        Explication : <br>
-                        {{ question.explication }}
-                    </td>
-                    <td><button class="btn btn-primary" (click)="modifierQuestion(question.id)">Modifier</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <ng-container *ngIf="showDisplayQuiz">
+            Id : {{quiz.id}}<br>
+            <b>{{quiz.code}}</b><br>
+            {{quiz.libelle}}<br>
+            Description <br>
+            {{quiz.description}}<br><br>
+            Information complémentaire : <br>
+            {{quiz.info}}<br>
+            <br>
+            Questions du quiz :<br>
+            <button class="btn btn-success" (click)="ajoutQuestion(quiz.id)">Ajout question</button>
+            <br>
+            <table class="table table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Libelle</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let question of questions">
+                        <td>{{question.ordre}}</td>
+                        <td>{{question.libelle}}<br>
+                            <ul>
+                                <li *ngFor="let option of question.options">{{option.id}} . {{option.valeur}}</li>
+                            </ul><br>
+                            Reponse correcte : <b>{{ question.idResponse }}</b><br>
+                            <br>
+                            Explication : <br>
+                            {{ question.explication }}
+                        </td>
+                        <td><button class="btn btn-primary" (click)="modifierQuestion(question.id)">Modifier</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+        <ng-container *ngIf="showCreateQuiz">
+            <div class="mb-3">
+                <label for="code" class="form-label">Code</label>
+                <input type="text" class="form-control" id="code" [(ngModel)]="nouveauQuiz.code">
+            </div>
+            <div class="mb-3">
+                <label for="libelle" class="form-label">Libelle</label>
+                <input type="text" class="form-control" id="libelle" [(ngModel)]="nouveauQuiz.libelle">
+            </div>
+            <div class="mb-3">
+                <label for="info" class="form-label">Info</label>
+                <input type="text" class="form-control" id="info" [(ngModel)]="nouveauQuiz.info">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3" [(ngModel)]="nouveauQuiz.description"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success" (click)="saveNewQuiz()">Enregistrer</button>
+            </div>
+        </ng-container>
     </div>
 </div>

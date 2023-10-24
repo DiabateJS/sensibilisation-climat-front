@@ -12,8 +12,11 @@ export class AdminComponent implements OnInit {
 
   quizs: Quiz[] = [];
   quiz: Quiz = {} as Quiz;
+  nouveauQuiz: Quiz = {} as Quiz;
   questions: Question[] = [];
   currentQuizId: number = 1;
+  showDisplayQuiz: boolean = false;
+  showCreateQuiz: boolean = false;
 
   constructor(private quizService: QuizService) { }
 
@@ -24,6 +27,8 @@ export class AdminComponent implements OnInit {
       if (this.quizs.length > 0){
         this.currentQuizId = this.quizs[0].id;
         this.loadQuizInfo(this.currentQuizId);
+        this.showDisplayQuiz = true;
+        this.showCreateQuiz = false;
       }
     });
   }
@@ -38,7 +43,16 @@ export class AdminComponent implements OnInit {
   }
 
   ajoutQuestion(idQuiz: number): void {
-    
+
+  }
+
+  creerQuiz(): void{
+    this.showDisplayQuiz = false;
+    this.showCreateQuiz = true;
+  }
+
+  saveNewQuiz(): void{
+    console.log(this.nouveauQuiz);
   }
 
 }
