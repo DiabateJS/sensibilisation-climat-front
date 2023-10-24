@@ -31,7 +31,11 @@
                     <td>{{question.libelle}}<br>
                         <ul>
                             <li *ngFor="let option of question.options">{{option.id}} . {{option.valeur}}</li>
-                        </ul>
+                        </ul><br>
+                        Reponse correcte : <b>{{ question.idResponse }}</b><br>
+                        <br>
+                        Explication : <br>
+                        {{ question.explication }}
                     </td>
                     <td><button class="btn btn-primary" (click)="modifierQuestion(question.id)">Modifier</button></td>
                 </tr>
