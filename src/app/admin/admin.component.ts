@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../model/quiz";
+import {Question} from "../model/question";
 import { QuizService } from '../quiz/quiz.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class AdminComponent implements OnInit {
 
   quizs: Quiz[] = [];
   quiz: Quiz = {} as Quiz;
+  questions: Question[] = [];
   currentQuizId: number = 1;
 
   constructor(private quizService: QuizService) { }
@@ -29,6 +31,14 @@ export class AdminComponent implements OnInit {
   loadQuizInfo(id: number): void{
     this.currentQuizId = id;
     this.quiz = this.quizs.filter(qz => qz.id == id)[0];
+    this.questions = this.quiz.questions;
+  }
+
+  modifierQuestion(idQuestion: number): void {
+  }
+
+  ajoutQuestion(idQuiz: number): void {
+    
   }
 
 }

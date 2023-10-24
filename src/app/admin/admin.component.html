@@ -10,6 +10,32 @@
         <b>{{quiz.code}}</b><br>
         {{quiz.libelle}}<br>
         Description <br>
-        {{quiz.description}}<br>
+        {{quiz.description}}<br><br>
+        Information complémentaire : <br>
+        {{quiz.info}}<br>
+        <br>
+        Questions du quiz :<br>
+        <button class="btn btn-success" (click)="ajoutQuestion(quiz.id)">Ajout question</button>
+        <br>
+        <table class="table table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Libelle</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let question of questions">
+                    <td>{{question.ordre}}</td>
+                    <td>{{question.libelle}}<br>
+                        <ul>
+                            <li *ngFor="let option of question.options">{{option.id}} . {{option.valeur}}</li>
+                        </ul>
+                    </td>
+                    <td><button class="btn btn-primary" (click)="modifierQuestion(question.id)">Modifier</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
